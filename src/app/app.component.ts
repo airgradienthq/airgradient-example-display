@@ -105,7 +105,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   public today?: Date;
   public apiToken = new FormControl('');
-  public loadingDisplayData: Observable<boolean> = this.displayData.loadingDisplayData$;
+  public loadingDisplayData$: Observable<boolean> = this.displayData.loadingDisplayData$;
 
   constructor(
     private _messageService: MessageService,

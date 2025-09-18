@@ -1,27 +1,97 @@
-# AgIbsDisplayDemo
+# International School Bangkok Display Demo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
+A demonstration display playground for the International School Bangkok (ISB) showcasing air quality monitoring data using public APIs. This Angular application provides a real-time display interface for environmental measurements.
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project serves as a demo application for ISB to showcase air quality monitoring capabilities. Instead of using internal APIs, this demo utilizes public APIs to display current environmental measurements in a user-friendly interface.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Real-time Data Display**: Automatically refreshes air quality measurements every 2 minutes
+- **Public API Integration**: Uses external public APIs for demonstration purposes
+- **Token-based Authentication**: Secure access to measurement data via API tokens
+- **Responsive Interface**: Built with Angular Material for a modern, responsive design
+- **Live Updates**: Real-time data updates without page refresh
 
-## Build
+## Technology Stack
+
+- **Framework**: Angular 13.3
+- **UI Library**: Angular Material (used for input field)
+- **HTTP Client**: Angular HttpClient for API communication
+- **State Management**: RxJS for reactive data flow
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher, v16 recommended)
+- npm or yarn package manager
+- Angular CLI
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd ag-ibs-display-demo
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+4. Navigate to `http://localhost:4200/` in your browser
+
+### Configuration
+
+The application requires an API token to access measurement data. Enter your token when prompted in the application interface.
+
+## API Integration
+
+The application connects to the public API endpoint:
+- **Endpoint**: `/api-int/public/api/v1/locations/measures/current`
+- **Method**: GET
+- **Authentication**: Token-based via query parameter
+- **Refresh Interval**: 2 minutes (120 seconds)
+
+## Development
+
+### Development Server
+
+Run `ng serve` for a dev server. The application will automatically reload if you change any of the source files.
+
+### Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+### Testing
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Project Structure
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+src/
+├── app/
+│   ├── models/           # Data models and interfaces
+│   ├── pipes/           # Custom Angular pipes
+│   ├── services/        # Data services and API communication
+│   └── components/      # Angular components
+├── environments/        # Environment configuration
+└── assets/             # Static assets
+```
 
-## Further help
+## Contributing
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This is a demonstration project for ISB. For any questions or modifications, please contact the development team.
+
+## License
+
+This project is for demonstration purposes only.
