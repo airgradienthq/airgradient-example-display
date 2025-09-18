@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 import { DisplayLocation } from 'src/app/models/display-data';
 import { MessageService } from 'src/app/services/message.service';
@@ -87,7 +87,6 @@ export function pmToUSAQI(pm02: number): number | null {
   } else {
     result = 500;
   }
-  // @ts-ignore
   if (result !== null && result < 0) {
     result = 0;
   }
@@ -122,6 +121,17 @@ export class AppComponent implements OnInit, OnDestroy {
           this.updateLocationsAndAverages();
           this.applyHeatIndexCalculations();
         }
+      });
+
+    this.apiToken.valueChanges
+      .pipe(
+        takeUntil(this.destroy$),
+        debounceTime(1000),
+        distinctUntilChanged(),
+        filter(value => value && value.trim().length > 0)
+      )
+      .subscribe((apiToken: string) => {
+        this.apiTokenManagement(apiToken);
       });
 
     this.today = new Date();
