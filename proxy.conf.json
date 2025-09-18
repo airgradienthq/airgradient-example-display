@@ -1,0 +1,11 @@
+{
+  "/api-int/*": {
+    "target": "https://api-int.airgradient.com",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api-int": ""
+    }
+  }
+}
