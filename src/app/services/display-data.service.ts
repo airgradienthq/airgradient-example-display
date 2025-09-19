@@ -28,7 +28,7 @@ export class DisplayDataService {
         takeUntil(this._stopCurrentRequest$),
         switchMap(() =>{
           this._loadingDisplayData$.next(true);
-          return this.http.get<any[]>(`/api-int/public/api/v1/locations/measures/current?token=${ api_token }`);
+          return this.http.get<any[]>(`/api/public/api/v1/locations/measures/current?token=${ api_token }`);
         }),
         retryWhen((errors) =>
           errors.pipe(
