@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public outdoorLocations?: any[];
   private destroy$: Subject<void> = new Subject<void>();
   public today?: Date;
-  public apiToken = new FormControl('');
+  public apiToken = new UntypedFormControl('');
   public loadingDisplayData$: Observable<boolean> = this.displayData.loadingDisplayData$;
 
   constructor(
