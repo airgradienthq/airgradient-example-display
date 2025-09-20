@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 import { DisplayLocation } from 'src/app/models/display-data';
 import { MessageService } from 'src/app/services/message.service';
 import { AirMeasureConfig } from 'src/app/models/air-measure-config';
 import { DisplayDataService } from 'src/app/services/display-data.service';
-import {FormControl} from '@angular/forms';
 
 const AIR_MEASURE_VALUES_COLORS_CONFIG: { [key: string]: AirMeasureConfig[] } = {
   pm02: [
@@ -68,7 +68,6 @@ const AIR_MEASURE_VALUES_COLORS_CONFIG: { [key: string]: AirMeasureConfig[] } = 
 }
 
 export function pmToUSAQI(pm02: number): number | null {
-
   let result = null;
   if (pm02 == null) {
     result = null;
@@ -92,7 +91,6 @@ export function pmToUSAQI(pm02: number): number | null {
   }
   return result !== null ? Number(result.toFixed(1)) : null;
 }
-
 
 @Component({
   selector: 'app-root',
@@ -182,7 +180,6 @@ export class AppComponent implements OnInit, OnDestroy {
     location.heatindex_clr = this.getColorByValue(location.heatindex, 'heatindex');
   }
 
-
   public getColorByValue(value: number, measure: string): string {
     const config: AirMeasureConfig[] = AIR_MEASURE_VALUES_COLORS_CONFIG[measure];
     config?.sort((a, b) => b.index - a.index);
@@ -195,7 +192,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     return color;
   }
-
 
   public calculateRothfuszHeatIndex(tempC: number, RH: number): { celsius: number; fahrenheit: number } {
 
@@ -239,7 +235,6 @@ export class AppComponent implements OnInit, OnDestroy {
     const heatIndexC = (HI - 32) * 5/9;
     return { celsius: heatIndexC, fahrenheit: HI };
   }
-
 
   private loadSavedApiToken(): void {
     const savedToken = localStorage.getItem('airGradientApiToken');
