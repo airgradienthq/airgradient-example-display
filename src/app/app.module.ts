@@ -9,12 +9,12 @@ import { AppComponent } from './app.component';
 import { NonNullablePipe } from 'src/app/pipes/non-nullable.pipe';
 import { MeasuresAvailablePipe } from 'src/app/pipes/measures-available.pipe';
 import { MessageService } from 'src/app/services/message.service';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { MatIconModule } from '@angular/material/icon';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatLegacyProgressBarModule as MatProgressBarModule} from '@angular/material/legacy-progress-bar';
 
 @NgModule({
   declarations: [
