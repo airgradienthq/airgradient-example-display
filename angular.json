@@ -75,10 +75,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "ag-ibs-display-demo:build:production"
+              "buildTarget": "ag-ibs-display-demo:build:production"
             },
             "development": {
-              "browserTarget": "ag-ibs-display-demo:build:development"
+              "buildTarget": "ag-ibs-display-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ag-ibs-display-demo:build"
+            "buildTarget": "ag-ibs-display-demo:build"
           }
         },
         "test": {
