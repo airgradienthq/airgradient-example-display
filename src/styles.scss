@@ -4,7 +4,8 @@
 @use '@angular/material' as mat;
 
 // Include the common styles for Angular Material
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 
 // Define a Material 3 dark theme for Angular 18
 $theme: mat.define-theme((

@@ -3,7 +3,6 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 
 import { DisplayLocation } from 'src/app/models/display-data';
 import { MessageService } from 'src/app/services/message.service';
@@ -107,7 +106,6 @@ export function pmToUSAQI(pm02: number): number | null {
   standalone: true,
   imports: [
     CommonModule,
-    RouterOutlet,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
