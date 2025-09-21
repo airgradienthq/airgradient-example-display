@@ -1,12 +1,22 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 import { DisplayLocation } from 'src/app/models/display-data';
 import { MessageService } from 'src/app/services/message.service';
 import { AirMeasureConfig } from 'src/app/models/air-measure-config';
 import { DisplayDataService } from 'src/app/services/display-data.service';
+import { NonNullablePipe } from 'src/app/pipes/non-nullable.pipe';
+import { MeasuresAvailablePipe } from 'src/app/pipes/measures-available.pipe';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 const AIR_MEASURE_VALUES_COLORS_CONFIG: { [key: string]: AirMeasureConfig[] } = {
   pm02: [
@@ -94,6 +104,19 @@ export function pmToUSAQI(pm02: number): number | null {
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressBarModule,
+    NonNullablePipe,
+    MeasuresAvailablePipe
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

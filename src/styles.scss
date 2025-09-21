@@ -6,20 +6,26 @@
 // Include the common styles for Angular Material
 @include mat.core();
 
-// Define a custom dark theme using legacy Material 2 API (compatible with Material 16)
-$dark-primary: mat.define-palette(mat.$blue-grey-palette, 800);
-$dark-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
-$dark-warn: mat.define-palette(mat.$deep-orange-palette);
-$dark-theme: mat.define-dark-theme((
+// Define a Material 3 dark theme for Angular 18
+$theme: mat.define-theme((
   color: (
-    primary: $dark-primary,
-    accent: $dark-accent,
-    warn: $dark-warn,
+    theme-type: dark,
+    primary: mat.$blue-palette,
+    tertiary: mat.$orange-palette,
+  ),
+  typography: (
+    brand-family: 'Roboto',
+    plain-family: 'Roboto',
+  ),
+  density: (
+    scale: 0,
   )
 ));
 
 // Include theme styles for core and each component used in your app
-@include mat.all-legacy-component-themes($dark-theme);
+html {
+  @include mat.all-component-themes($theme);
+}
 
 * {
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;

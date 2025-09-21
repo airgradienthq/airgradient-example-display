@@ -1,4 +1,4 @@
 export const environment = {
-  domain: 'https://app.airgradient.com',
+  apiUrl: 'https://api.airgradient.com',
   production: false
 };

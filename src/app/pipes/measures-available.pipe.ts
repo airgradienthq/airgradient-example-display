@@ -3,7 +3,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { DisplayLocation } from 'src/app/models/display-data';
 
 @Pipe({
-  name: 'measuresAvailable'
+  name: 'measuresAvailable',
+  standalone: true
 })
 export class MeasuresAvailablePipe implements PipeTransform {
   transform(location: DisplayLocation): boolean {

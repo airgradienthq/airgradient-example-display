@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, Subject, timer } from 'rxjs';
 import { delay, retryWhen, switchMap, takeUntil } from 'rxjs/operators';
 
 import { MessageService } from 'src/app/services/message.service';
+import { environment } from 'src/environments/environment';
 
 const DISPLAY_DATA_REFRESH_INTERVAL = 120000;
 

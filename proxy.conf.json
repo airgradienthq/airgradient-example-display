@@ -6,6 +6,8 @@
     "logLevel": "debug",
     "pathRewrite": {
       "^/api": ""
-    }
+    },
+    "onProxyReq": "function(proxyReq, req, res) { console.log('Proxying request:', req.url); }",
+    "onError": "function(err, req, res) { console.log('Proxy error:', err); }"
   }
 }
