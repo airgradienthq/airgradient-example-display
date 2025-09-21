@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable, Subject, timer } from 'rxjs';
-import { delay, retryWhen, switchMap, takeUntil } from 'rxjs/operators';
+import { retryWhen, switchMap, takeUntil } from 'rxjs/operators';
 
 import { MessageService } from 'src/app/services/message.service';
-import { environment } from 'src/environments/environment';
 
 const DISPLAY_DATA_REFRESH_INTERVAL = 120000;
 
@@ -18,7 +18,8 @@ export class DisplayDataService {
 
   constructor(
     private http: HttpClient,
-    private _messageService: MessageService
+    private _messageService: MessageService,
+    private _snackBar: MatSnackBar
   ) { }
 
   startGettingDisplayMeasuresData(api_token: string): void {
@@ -33,7 +34,18 @@ export class DisplayDataService {
         }),
         retryWhen((errors) =>
           errors.pipe(
-            delay(1000),
+            switchMap((error) => {
+              if (error.status === 401 || error.status === 403) {
+                this._snackBar.open('Invalid or expired token. Please refresh your token.', 'Close', {
+                  duration: 5000,
+                  panelClass: ['error-snackbar']
+                });
+                this._stopCurrentRequest$.next();
+                this._loadingDisplayData$.next(false);
+                throw error;
+              }
+              return timer(1000);
+            }),
             takeUntil(this._stopCurrentRequest$)
           )
         )
