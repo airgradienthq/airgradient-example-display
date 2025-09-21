@@ -11,23 +11,28 @@ This project serves as a demo application for ISB to showcase air quality monito
 - **Real-time Data Display**: Automatically refreshes air quality measurements every 2 minutes
 - **Public API Integration**: Uses external public APIs for demonstration purposes
 - **Token-based Authentication**: Secure access to measurement data via API tokens
+- **Smart Error Handling**: Automatically stops requests on invalid tokens while continuing to retry on network errors
+- **User Notifications**: Shows snackbar notifications for authentication errors
 - **Responsive Interface**: Built with Angular Material for a modern, responsive design
 - **Live Updates**: Real-time data updates without page refresh
 
 ## Technology Stack
 
-- **Framework**: Angular 13.3
-- **UI Library**: Angular Material (used for input field)
+- **Framework**: Angular 20.3
+- **UI Library**: Angular Material (for modern UI components)
 - **HTTP Client**: Angular HttpClient for API communication
 - **State Management**: RxJS for reactive data flow
+- **TypeScript**: 5.9.2
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v14 or higher, v16 recommended)
-- npm or yarn package manager
-- Angular CLI
+- **Node.js**: v18 or higher (v22 recommended for Angular 20)
+- **npm**: v8 or higher (comes with Node.js)
+- **Angular CLI**: v20 or higher
+
+> **Note**: Angular 20 requires Node.js v22.12.0 or higher. We recommend using Node.js v24 for optimal performance and compatibility.
 
 ### Installation
 
