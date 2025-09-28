@@ -77,6 +77,7 @@ class AirQualityApp {
         this.loadSavedApiToken();
         this.loadSavedTemperatureUnit();
         this.updateNoDataVisibility();
+        this.updateTemperatureToggleVisibility();
     }
 
     setupEventListeners() {
@@ -213,6 +214,16 @@ class AirQualityApp {
         );
     }
 
+    // Check if any location has temperature data
+    hasTemperatureData(locations) {
+        if (!locations || !Array.isArray(locations)) return false;
+
+        return locations.some(location =>
+            this.isNonNullable(location.atmp_corrected, true) ||
+            this.isNonNullable(location.heatindex, true)
+        );
+    }
+
     // Check if value is non-nullable
     isNonNullable(value, checkForUndefined = false) {
         if (checkForUndefined) {
@@ -328,6 +339,24 @@ class AirQualityApp {
         toggleButton.title = `Switch to ${this.temperatureUnit === 'celsius' ? 'Fahrenheit' : 'Celsius'}`;
     }
 
+    // Update temperature toggle visibility based on available data
+    updateTemperatureToggleVisibility() {
+        const tempToggle = document.querySelector('.temp-unit-toggle');
+        const allLocations = [];
+
+        if (this.currentDisplayData) {
+            allLocations.push(...this.currentDisplayData);
+        }
+
+        const hasTemperature = this.hasTemperatureData(allLocations);
+
+        if (hasTemperature) {
+            tempToggle.classList.remove('hidden');
+        } else {
+            tempToggle.classList.add('hidden');
+        }
+    }
+
     // Convert Celsius to Fahrenheit
     celsiusToFahrenheit(celsius) {
         if (celsius === null || celsius === undefined) return null;
@@ -378,8 +407,8 @@ class AirQualityApp {
         if (window.location.hostname === 'localhost' && window.location.port === '3001') {
             return '/api/public/api/v1/locations/measures/current';
         }
-        // If we're opening the HTML file directly, use the proxy server URL
-        return 'http://localhost:3001/api/public/api/v1/locations/measures/current';
+        // Try direct API call first (in case CORS is enabled)
+        return 'https://api.airgradient.com/public/api/v1/locations/measures/current';
     }
 
     // Fetch display data from API - works whether served from proxy or opened directly
@@ -419,9 +448,12 @@ class AirQualityApp {
         } catch (error) {
             console.error('API call failed:', error.message);
 
-            // If proxy fails, show helpful message
-            if (error.message.includes('404') || error.message.includes('fetch') || error.message.includes('NetworkError')) {
-                this.showSnackbar('⚠️ Please run the Node.js proxy server: "node proxy.js" then visit http://localhost:3001');
+            // Handle CORS errors with helpful suggestions
+            if (error.message.includes('CORS') || error.message.includes('blocked') ||
+                error.message.includes('fetch') || error.message.includes('NetworkError')) {
+                this.showSnackbar('🔒 CORS Error: Try running "node proxy.js" and visit localhost:3001, or use a CORS browser extension');
+            } else if (error.message.includes('404')) {
+                this.showSnackbar('⚠️ Please run the proxy server: "node proxy.js" then visit http://localhost:3001');
             } else {
                 this.showSnackbar(`❌ API Error: ${error.message}`);
             }
@@ -460,6 +492,7 @@ class AirQualityApp {
         // Update section visibility
         this.updateSectionVisibility(processedIndoor, processedOutdoor);
         this.updateNoDataVisibility();
+        this.updateTemperatureToggleVisibility();
     }
 
     // Add heat index to location
@@ -623,6 +656,7 @@ class AirQualityApp {
         if (!hasLocations) {
             noDataMessage.classList.remove('hidden');
 
+            // Show API input field only when there's no API token
             if (this.apiToken) {
                 noTokenMessage.classList.add('hidden');
                 noLocationsMessage.classList.remove('hidden');

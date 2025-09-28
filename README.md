@@ -1,10 +1,10 @@
-# International School Bangkok Display Demo - Plain JavaScript
+# AirGradient Display Demo - Plain JavaScript
 
-A demonstration display playground for the International School Bangkok (ISB) showcasing air quality monitoring data using public APIs. This application provides a real-time display interface for environmental measurements using **plain JavaScript** instead of Angular.
+A demonstration display playground showcasing air quality monitoring data using public APIs. This application provides a real-time display interface for environmental measurements using **plain JavaScript** instead of Angular.
 
 ## Overview
 
-This project serves as a demo application for ISB to showcase air quality monitoring capabilities. Instead of using internal APIs, this demo utilizes public APIs to display current environmental measurements in a user-friendly interface.
+This project serves as a demo application to showcase air quality monitoring capabilities. Instead of using internal APIs, this demo utilizes public APIs to display current environmental measurements in a user-friendly interface.
 
 ## Features
 
@@ -154,7 +154,7 @@ This application was converted from an Angular 20 application to plain JavaScrip
 
 ## Contributing
 
-This is a demonstration project for ISB. For any questions or modifications, please contact the development team.
+This is a demonstration project for AirGradient display applications. For any questions or modifications, please contact the development team.
 
 ## License
 
