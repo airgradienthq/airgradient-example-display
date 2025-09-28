@@ -5,18 +5,20 @@
   ></mat-progress-bar>
 }
 
-<mat-form-field class="api-toke-field">
-  <mat-label>API Token</mat-label>
-  <input
-    matInput
-    [formControl]="apiToken"
-    (keyup.enter)="apiTokenManagement(apiToken.value)"
-  />
-</mat-form-field>
+<div class="controls">
+  <mat-slide-toggle
+    class="example-margin"
+    [checked]="checked"
+    [disabled]="disabled"
+    (change)="toggleTemperatureUnit()"
+  >
+    °F
+  </mat-slide-toggle>
+</div>
 
 <div class="spacer-bottom-lg wrapper">
   <h1>
-    International School Bangkok
+    AirGradient Classic Display
   </h1>
 
   @if (outdoorLocations?.length) {
@@ -68,17 +70,7 @@
 
           @if (location.atmp_corrected | nonNullablePipe : true) {
             <div class="measurement">
-              <div
-                class="sub-measurement-icon"
-                [ngStyle]="{ backgroundColor: location.atmp_corrected }"
-              ></div>
-              <span>Temperature: {{ location.atmp_corrected }}°C</span>
-            </div>
-          }
-
-          @if (location.atmp_fahrenheit | nonNullablePipe : true) {
-            <div class="measurement">
-              <span>Temperature: {{ location.atmp_fahrenheit | number : '1.0-2' }}°F</span>
+              <span>Temperature: {{ location.atmp_corrected | temperatureValue : isFahrenheit | number : '1.1-1' }}{{ getTemperatureUnit() }}</span>
             </div>
           }
 
@@ -94,17 +86,7 @@
                 class="sub-measurement-icon"
                 [ngStyle]="{ backgroundColor: getColorByValue(location.heatindex, 'heatindex') }"
               ></div>
-              <span>Heat Index: {{ location.heatindex | number : '1.0-2' }}°C</span>
-            </div>
-          }
-
-          @if (location.heat_index_fahrenheit | nonNullablePipe : true) {
-            <div class="measurement">
-              <div
-                class="sub-measurement-icon"
-                [ngStyle]="{ backgroundColor: getColorByValue(location.heat_index_fahrenheit, 'heat_index_fahrenheit') }"
-              ></div>
-              <span>Heat Index: {{ location.heat_index_fahrenheit | number:'1.0-2' }}°F</span>
+              <span>Heat Index: {{ location.heatindex | temperatureValue : isFahrenheit | number : '1.1-1' }}{{ getTemperatureUnit() }}</span>
             </div>
           }
         } @else {
@@ -169,13 +151,7 @@
 
           @if (location.atmp_corrected | nonNullablePipe : true) {
             <div class="measurement">
-              <span>Temperature: {{ location.atmp_corrected | number : '1.0-2' }}°C</span>
-            </div>
-          }
-
-          @if (location.atmp_fahrenheit | nonNullablePipe : true) {
-            <div class="measurement">
-              <span>Temperature: {{ location.atmp_fahrenheit | number : '1.0-2' }}°F</span>
+              <span>Temperature: {{ location.atmp_corrected | temperatureValue : isFahrenheit | number : '1.1-1' }}{{ getTemperatureUnit() }}</span>
             </div>
           }
 
@@ -191,17 +167,7 @@
                 class="sub-measurement-icon"
                 [ngStyle]="{ backgroundColor: getColorByValue(location.heatindex, 'heatindex') }"
               ></div>
-              <span>Heat Index: {{ location.heatindex | number : '1.0-2' }}°C</span>
-            </div>
-          }
-
-          @if (location.heat_index_fahrenheit | nonNullablePipe : true) {
-            <div class="measurement">
-              <div
-                class="sub-measurement-icon"
-                [ngStyle]="{ backgroundColor: getColorByValue(location.heat_index_fahrenheit, 'heat_index_fahrenheit') }"
-              ></div>
-              <span>Heat Index: {{ location.heat_index_fahrenheit | number:'1.0-2' }}°F</span>
+              <span>Heat Index: {{ location.heatindex | temperatureValue : isFahrenheit | number : '1.1-1' }}{{ getTemperatureUnit() }}</span>
             </div>
           }
         } @else {
@@ -238,6 +204,15 @@
         You can get one by going to
         <a href="https://app.airgradient.com/settings/place?tab=4" target="_blank">Connectivity Page</a>.
       </div>
+
+      <mat-form-field class="api-token-field">
+        <mat-label>API Token</mat-label>
+        <input
+          matInput
+          [formControl]="apiToken"
+          (keyup.enter)="apiTokenManagement(apiToken.value)"
+        />
+      </mat-form-field>
     }
   }
 </div>

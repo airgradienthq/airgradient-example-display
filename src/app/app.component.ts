@@ -10,12 +10,14 @@ import { AirMeasureConfig } from 'src/app/models/air-measure-config';
 import { DisplayDataService } from 'src/app/services/display-data.service';
 import { NonNullablePipe } from 'src/app/pipes/non-nullable.pipe';
 import { MeasuresAvailablePipe } from 'src/app/pipes/measures-available.pipe';
+import { TemperatureValuePipe } from 'src/app/pipes/temperature-value.pipe';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatSlideToggle} from '@angular/material/slide-toggle';
 
 const AIR_MEASURE_VALUES_COLORS_CONFIG: { [key: string]: AirMeasureConfig[] } = {
   pm02: [
@@ -113,7 +115,9 @@ export function pmToUSAQI(pm02: number): number | null {
     MatIconModule,
     MatProgressBarModule,
     NonNullablePipe,
-    MeasuresAvailablePipe
+    MeasuresAvailablePipe,
+    TemperatureValuePipe,
+    MatSlideToggle
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -125,6 +129,9 @@ export class AppComponent implements OnInit, OnDestroy {
   public today?: Date;
   public apiToken = new FormControl<string>('', { nonNullable: true });
   public loadingDisplayData$: Observable<boolean> = this.displayData.loadingDisplayData$;
+  public checked = false;
+  public disabled = false;
+  public isFahrenheit = false;
 
   constructor(
     private _messageService: MessageService,
@@ -155,6 +162,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.today = new Date();
     this.loadSavedApiToken();
+    this.loadSavedTemperatureUnit();
   }
 
   ngOnDestroy(): void {
@@ -269,5 +277,32 @@ export class AppComponent implements OnInit, OnDestroy {
     if (!apiToken) return;
     localStorage.setItem('airGradientApiToken', apiToken);
     this.displayData.startGettingDisplayMeasuresData(apiToken);
+  }
+
+  public toggleTemperatureUnit(): void {
+    this.isFahrenheit = !this.isFahrenheit;
+    this.checked = this.isFahrenheit;
+    localStorage.setItem('temperatureUnit', this.isFahrenheit ? 'fahrenheit' : 'celsius');
+  }
+
+  private loadSavedTemperatureUnit(): void {
+    const savedUnit = localStorage.getItem('temperatureUnit');
+    if (savedUnit === 'fahrenheit') {
+      this.isFahrenheit = true;
+      this.checked = true;
+    } else {
+      this.isFahrenheit = false;
+      this.checked = false;
+    }
+  }
+
+  public celsiusToFahrenheit(celsius: number): number {
+    if (celsius === null || celsius === undefined) return celsius;
+    return (celsius * 9/5) + 32;
+  }
+
+
+  public getTemperatureUnit(): string {
+    return this.isFahrenheit ? '°F' : '°C';
   }
 }

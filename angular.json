@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ag-ibs-display-demo": {
+    "ag-classic-display-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ag-ibs-display-demo",
+            "outputPath": "dist/ag-classic-display-demo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -75,10 +75,10 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "ag-ibs-display-demo:build:production"
+              "buildTarget": "ag-classic-display-demo:build:production"
             },
             "development": {
-              "buildTarget": "ag-ibs-display-demo:build:development"
+              "buildTarget": "ag-classic-display-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ag-ibs-display-demo:build"
+            "buildTarget": "ag-classic-display-demo:build"
           }
         },
         "test": {

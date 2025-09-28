@@ -118,13 +118,26 @@
   display: none !important;
 }
 
-.api-toke-field {
+.controls {
   position: absolute;
   top: 10px;
   right: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+.api-token-field {
   width: 250px;
   max-width: 100%;
-  margin-bottom: 20px;
+
+  margin-top: var(--md-size);
 
   @media (max-width: 500px) {
     width: 100%;
@@ -153,6 +166,36 @@
 
     .mat-input-element::placeholder {
       color: rgba(255, 255, 255, 0.5) !important;
+    }
+  }
+}
+
+.example-margin {
+  height: 56px; // Match the form field height
+  display: flex;
+  align-items: center;
+  margin-top: var(--md-size);
+
+  ::ng-deep {
+    .mat-slide-toggle-bar {
+      background-color: rgba(255, 255, 255, 0.3) !important;
+    }
+
+    .mat-slide-toggle-thumb {
+      background-color: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    .mdc-switch--selected .mdc-switch__track {
+      background-color: rgba(33, 150, 243, 0.5) !important;
+    }
+
+    .mdc-switch--selected .mdc-switch__handle::after {
+      background-color: #2196F3 !important;
+    }
+
+    .mdc-form-field > label {
+      color: rgba(255, 255, 255, 0.8) !important;
+      font-weight: 500;
     }
   }
 }

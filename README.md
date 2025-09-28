@@ -1,10 +1,10 @@
-# International School Bangkok Display Demo
+# AirGradient Classic Display Demo
 
-A demonstration display playground for the International School Bangkok (ISB) showcasing air quality monitoring data using public APIs. This Angular application provides a real-time display interface for environmental measurements.
+A demonstration display playground for AirGradient Classic Display showcasing air quality monitoring data using public APIs. This Angular application provides a real-time display interface for environmental measurements.
 
 ## Overview
 
-This project serves as a demo application for ISB to showcase air quality monitoring capabilities. Instead of using internal APIs, this demo utilizes public APIs to display current environmental measurements in a user-friendly interface.
+This project serves as a demo application for AirGradient Classic Display to showcase air quality monitoring capabilities. Instead of using internal APIs, this demo utilizes public APIs to display current environmental measurements in a user-friendly interface.
 
 ## Features
 
@@ -58,6 +58,19 @@ npm start
 
 The application requires an API token to access measurement data. Enter your token when prompted in the application interface.
 
+#### Resetting API Token
+
+To reset or change the API token:
+1. Clear your browser's localStorage for this application
+2. Reload the page
+3. Enter your new API token when prompted
+
+You can clear localStorage by:
+- Opening browser Developer Tools (F12)
+- Going to Application/Storage tab → Local Storage
+- Clearing the stored data for this domain
+- Or running `localStorage.clear()` in the browser console
+
 ## API Integration
 
 The application connects to the public API endpoint:
@@ -95,7 +108,7 @@ src/
 
 ## Contributing
 
-This is a demonstration project for ISB. For any questions or modifications, please contact the development team.
+This is a demonstration project for AirGradient Classic Display. For any questions or modifications, please contact the development team.
 
 ## License
 
