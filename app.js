@@ -408,7 +408,7 @@ class AirQualityApp {
             return '/api/public/api/v1/locations/measures/current';
         }
         // Try direct API call first (in case CORS is enabled)
-        return 'https://api.airgradient.com/public/api/v1/locations/measures/current';
+        return 'https://api.airgradient.com/public/api/v1/locations/measures/current'; // https://api.airgradient.com/public/api/v1/locations/measures/current?token=6b5e5197-521a-478c-ac99-d3b326ff6008
     }
 
     // Fetch display data from API - works whether served from proxy or opened directly
@@ -423,9 +423,6 @@ class AirQualityApp {
 
             const response = await fetch(`${apiUrl}?token=${encodeURIComponent(apiToken)}`, {
                 method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
             });
 
             if (!response.ok) {

@@ -8,10 +8,9 @@ This project serves as a demo application to showcase air quality monitoring cap
 
 ## Features
 
-- **Instant Setup**: Open HTML file directly in browser - works immediately with proxy server
-- **Smart URL Detection**: Automatically detects whether opened as file or served from proxy
+- **Instant Setup**: Open HTML file directly in browser - no server required!
 - **Real-time Data Display**: Automatically refreshes air quality measurements every 2 minutes
-- **Public API Integration**: Uses external public APIs for demonstration purposes
+- **Public API Integration**: Uses external public API for demonstration purposes - https://api.airgradient.com/public/docs/api/v1/
 - **Token-based Authentication**: Secure access to measurement data via API tokens
 - **Smart Error Handling**: Automatically stops requests on invalid tokens while continuing to retry on network errors
 - **User Notifications**: Shows snackbar notifications for authentication errors
@@ -33,7 +32,7 @@ This project serves as a demo application to showcase air quality monitoring cap
 ### Prerequisites
 
 - **Web Browser**: Any modern browser with ES6+ support
-- **Node.js** (optional): For the best experience with built-in CORS proxy
+- **CORS Extension**: Browser extension like "CORS Unblock" or "Allow CORS"
 - **No Dependencies**: Zero npm packages required!
 
 ### Installation & Running
@@ -46,17 +45,12 @@ cd ag-ibs-display-demo
 
 **Step 2: Choose your preferred method:**
 
-**Method 1: Direct File Opening (Recommended)**
-1. Start the proxy server: `node proxy.js`
-2. Open `index.html` directly in your browser (double-click or drag to browser)
-3. Enter your API token and it works immediately!
+**Direct File Opening**
+1. Open `index.html` directly in your browser (double-click or drag to browser)
+2. Enter your API token and it works immediately!
 
-**Method 2: Traditional Server Access**
-1. Run the proxy server: `node proxy.js`
-2. Visit: `http://localhost:3001`
-3. Enter your API token
 
-**That's it!** The app automatically detects how it's being accessed and connects to the proxy server. No CORS issues, no complex setup.
+**That's it!**
 
 ### Configuration
 
@@ -82,11 +76,7 @@ The application connects to the public API endpoint:
 ├── index.html          # Main HTML file
 ├── app.js             # Main application logic
 ├── styles.css         # All CSS styles
-├── proxy.js           # Node.js CORS proxy server
-├── package.json       # Project configuration
-├── test.html          # Test suite
-├── README.md          # This file
-└── .gitignore         # Git ignore file
+└── README.md          # This file
 ```
 
 ## Key Features Implemented
@@ -146,15 +136,10 @@ This application was converted from an Angular 20 application to plain JavaScrip
 3. Edit `index.html` for structure
 4. **Just refresh browser to see changes instantly!**
 
-### Testing
-
-- Open `test.html` in your browser to run the test suite
-- Open developer console to see any JavaScript errors or network issues
-- The application includes comprehensive error handling and logging
-
 ## Contributing
 
-This is a demonstration project for AirGradient display applications. For any questions or modifications, please contact the development team.
+This is a demonstration project for AirGradient display applications. 
+For any questions or modifications, please contact the development team.
 
 ## License
 
