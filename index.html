@@ -18,9 +18,9 @@
 
     <!-- Temperature Unit Toggle -->
     <div class="temp-unit-toggle">
-        <button id="temp-toggle" class="temp-toggle-btn" title="Switch temperature units">
-            °C
-        </button>
+      <button id="temp-toggle" class="temp-toggle-btn" title="Switch temperature units">
+        °C
+      </button>
     </div>
 
     <!-- Main Content -->
@@ -41,39 +41,22 @@
 
         <!-- No Data Message -->
         <div id="no-data-message" class="no-data">
-            <div id="no-token-message">
-                <h3>🚀 Simple Setup</h3>
-                <p><strong>Choose your preferred method:</strong></p>
+          <div id="no-token-message">
+            <h3>🔑 Get API Token</h3>
+            <p>Get your API Token from the
+            <a href="https://app.airgradient.com/settings/place?tab=4" target="_blank">Connectivity Page</a>.</p>
 
-                <h4>Method 1: Proxy Server (Recommended)</h4>
-                <ol>
-                    <li>Run the proxy server: <code>node proxy.js</code></li>
-                    <li>Visit: <code>http://localhost:3001</code></li>
-                    <li>Enter your API token below</li>
-                </ol>
-
-                <h4>Method 2: Direct Access (No Proxy)</h4>
-                <ol>
-                    <li>Install a CORS browser extension (like "CORS Unblock")</li>
-                    <li>Enable the extension and enter your API token below</li>
-                </ol>
-
-                <h3>🔑 Get API Token</h3>
-                <p>Get your API Token from the
-                <a href="https://app.airgradient.com/settings/place?tab=4" target="_blank">Connectivity Page</a>.</p>
-
-                <p><small>💡 CORS restrictions prevent direct API calls from browsers. Use a proxy server or browser extension to bypass.</small></p>
-
-                <!-- API Token Input -->
-                <div class="api-token-field">
-                    <div class="input-container">
-                      <input type="text" id="api-token" placeholder="Enter your API token">
-                    </div>
-                </div>
+            <!-- API Token Input -->
+            <div class="api-token-field">
+              <div class="input-container">
+                <input type="text" id="api-token" placeholder="Enter your API token">
+              </div>
             </div>
-            <div id="no-locations-message" class="hidden">
-                <h2>No Locations Data</h2>
-            </div>
+          </div>
+
+          <div id="no-locations-message" class="hidden">
+            <h2>No Locations Data</h2>
+          </div>
         </div>
     </div>
 

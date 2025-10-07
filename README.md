@@ -32,7 +32,6 @@ This project serves as a demo application to showcase air quality monitoring cap
 ### Prerequisites
 
 - **Web Browser**: Any modern browser with ES6+ support
-- **CORS Extension**: Browser extension like "CORS Unblock" or "Allow CORS"
 - **No Dependencies**: Zero npm packages required!
 
 ### Installation & Running
@@ -60,7 +59,25 @@ The application requires just one step:
 
 2. **Enter Token**: Enter your API token in the application interface
 
-The app will automatically try multiple built-in methods to fetch data. If browser security restrictions prevent data fetching, the app will show simple solutions in the interface.
+The app will automatically try multiple built-in methods to fetch data. 
+If browser security restrictions prevent data fetching, 
+the app will show simple solutions in the interface.
+
+## If Your API Token Is Invalid
+
+If you're seeing authentication errors or the app isn't loading data, your saved API token may be expired or invalid. To fix this:
+
+1. **Clear your browser's local storage** for this site to remove the old token
+2. **Refresh the page**
+3. **Enter your new API token** from the [AirGradient Connectivity Page](https://app.airgradient.com/settings/place?tab=4)
+
+### How to Clear Local Storage
+
+- **Chrome/Edge**: Press `F12` → Go to "Application" tab → Click "Local Storage" → Right-click your site → Select "Clear"
+- **Firefox**: Press `F12` → Go to "Storage" tab → Click "Local Storage" → Right-click your site → Select "Delete All"
+- **Safari**: Press `Option + Command + C` → Go to "Storage" tab → Click "Local Storage" → Right-click your site → Select "Delete"
+
+Alternatively, you can simply clear your browser cache and site data for this page.
 
 ## API Integration
 
@@ -103,44 +120,15 @@ The application connects to the public API endpoint:
 - **Local Storage**: API token persistence across sessions
 - **Responsive Error Recovery**: Intelligent retry logic for network errors
 
-## Migration from Angular
-
-This application was converted from an Angular 20 application to plain JavaScript while maintaining:
-- ✅ All original functionality
-- ✅ Same UI/UX design
-- ✅ Same API integration
-- ✅ Same error handling
-- ✅ Same responsive behavior
-- ✅ Same performance characteristics
-
-### Key Differences
-- **No Framework Dependencies**: Removed Angular, RxJS, Angular Material
-- **Reduced Bundle Size**: From ~2MB to ~15KB total
-- **Faster Loading**: No framework initialization overhead
-- **Browser Compatibility**: Works in any ES6+ browser
-- **Simpler Deployment**: Just static files, no build process required
-
 ## Browser Support
-
 - Chrome 60+ ✅
 - Firefox 55+ ✅
 - Safari 11+ ✅
 - Edge 79+ ✅
 
-## Development
-
-### Making Changes
-
-1. Edit `app.js` for application logic
-2. Edit `styles.css` for styling
-3. Edit `index.html` for structure
-4. **Just refresh browser to see changes instantly!**
-
 ## Contributing
-
 This is a demonstration project for AirGradient display applications. 
 For any questions or modifications, please contact the development team.
 
 ## License
-
 This project is for demonstration purposes only.

@@ -407,8 +407,7 @@ class AirQualityApp {
         if (window.location.hostname === 'localhost' && window.location.port === '3001') {
             return '/api/public/api/v1/locations/measures/current';
         }
-        // Try direct API call first (in case CORS is enabled)
-        return 'https://api.airgradient.com/public/api/v1/locations/measures/current'; // https://api.airgradient.com/public/api/v1/locations/measures/current?token=6b5e5197-521a-478c-ac99-d3b326ff6008
+        return 'https://api.airgradient.com/public/api/v1/locations/measures/current';
     }
 
     // Fetch display data from API - works whether served from proxy or opened directly
@@ -445,11 +444,7 @@ class AirQualityApp {
         } catch (error) {
             console.error('API call failed:', error.message);
 
-            // Handle CORS errors with helpful suggestions
-            if (error.message.includes('CORS') || error.message.includes('blocked') ||
-                error.message.includes('fetch') || error.message.includes('NetworkError')) {
-                this.showSnackbar('🔒 CORS Error: Try running "node proxy.js" and visit localhost:3001, or use a CORS browser extension');
-            } else if (error.message.includes('404')) {
+            if (error.message.includes('404')) {
                 this.showSnackbar('⚠️ Please run the proxy server: "node proxy.js" then visit http://localhost:3001');
             } else {
                 this.showSnackbar(`❌ API Error: ${error.message}`);
