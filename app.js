@@ -401,23 +401,13 @@ class AirQualityApp {
         }, 120000); // 120 seconds
     }
 
-    // Detect the correct API URL based on current location
-    getApiUrl() {
-        // If we're on localhost:3001 (the proxy server), use relative path
-        if (window.location.hostname === 'localhost' && window.location.port === '3001') {
-            return '/api/public/api/v1/locations/measures/current';
-        }
-        return 'https://api.airgradient.com/public/api/v1/locations/measures/current';
-    }
-
-    // Fetch display data from API - works whether served from proxy or opened directly
     async fetchDisplayData(apiToken) {
         if (this.stopCurrentRequest) return;
 
         this.setLoadingState(true);
 
         try {
-            const apiUrl = this.getApiUrl();
+            const apiUrl = 'https://api.airgradient.com/public/api/v1/locations/measures/current';
             console.log(`Attempting API call to: ${apiUrl}`);
 
             const response = await fetch(`${apiUrl}?token=${encodeURIComponent(apiToken)}`, {
@@ -443,12 +433,7 @@ class AirQualityApp {
 
         } catch (error) {
             console.error('API call failed:', error.message);
-
-            if (error.message.includes('404')) {
-                this.showSnackbar('⚠️ Please run the proxy server: "node proxy.js" then visit http://localhost:3001');
-            } else {
-                this.showSnackbar(`❌ API Error: ${error.message}`);
-            }
+            this.showSnackbar(`❌ API Error: ${error.message}`);
 
             this.setLoadingState(false);
         }
