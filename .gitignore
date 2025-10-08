@@ -6,3 +6,8 @@
 *.launch
 .settings/
 *.sublime-workspace
+
+# dependencies from angular branch
+/package-lock.json
+/node_modules
+/.angular

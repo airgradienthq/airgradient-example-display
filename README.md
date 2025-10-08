@@ -1,10 +1,17 @@
 # AirGradient Display Demo - Plain JavaScript
 
-A demonstration display playground showcasing air quality monitoring data using public APIs. This application provides a real-time display interface for environmental measurements using **plain JavaScript** instead of Angular.
+A demonstration display playground showcasing air quality monitoring data using public APIs. 
+This application provides a real-time display interface for environmental measurements using **plain JavaScript**.
 
 ## Overview
 
-This project serves as a demo application to showcase air quality monitoring capabilities. Instead of using internal APIs, this demo utilizes public APIs to display current environmental measurements in a user-friendly interface.
+This project serves as a demo application to showcase air quality monitoring capabilities. 
+Instead of using internal APIs, this demo utilizes public APIs to display current environmental 
+measurements in a user-friendly interface. 
+
+There are two branches: `js-plain` and `angular`.
+- `js-plain`: A lightweight, dependency-free implementation using plain JavaScript, HTML, and CSS. Runs directly in the browser by opening the HTML file—no build step or server required. Ideal for quick demos, simple deployments, or environments where installing tooling isn’t desired.
+- `angular`: A full-featured Angular implementation with a component-based architecture, routing-ready structure, and development tooling. Requires Node.js and npm for installing dependencies and running development/build commands. Suited for larger projects, extensibility, and integration into existing Angular ecosystems.
 
 ## Features
 
