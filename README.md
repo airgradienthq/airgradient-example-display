@@ -46,7 +46,7 @@ There are two branches: `js-plain` and `angular`.
 **Step 1: Clone or download the repository:**
 ```bash
 git clone <repository-url>
-cd ag-ibs-display-demo
+cd airgradient-example-display
 ```
 
 **Step 2: Choose your preferred method:**
